@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jake Skidmore - Engineering Manager</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+        }
+
+        a {
+            color: #77aaff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 3px solid #77aaff;
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(119, 170, 255, 0.3), transparent);
+            opacity: 0;
+            animation: glow 3s infinite alternate;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin: 0;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        header p {
+            font-size: 20px;
+            margin: 10px 0 0;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background: rgba(119, 170, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .tab-button.active {
+            background: #77aaff;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Experience & Education Items */
+        .experience-item, .education-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .experience-item h3, .education-item h3 {
+            font-size: 24px;
+            margin: 0 0 10px;
+        }
+
+        .experience-item p, .education-item p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* Skills */
+        #skills ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #skills ul li {
+            background: #77aaff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        #skills ul li:hover {
+            transform: scale(1.1);
+            background: #5599ff;
+        }
+
+        /* Contact */
+        #contact ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        #contact ul li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes glow {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 3px solid #77aaff;
+            margin-top: 40px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* New Additions */
+        .view-more {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .view-more button {
+            background: #77aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .view-more button:hover {
+            background: #5599ff;
+            transform: translateY(-3px);
+        }
+
+        .skill-level {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-level span {
+            width: 200px; /* Adjust width as needed */
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .skill-level progress {
+            flex: 1;
+            height: 10px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-level progress::-webkit-progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .skill-level progress::-webkit-progress-value {
+            background: #77aaff;
+            border-radius: 5px;
+        }
+
+        .skill-level progress::-moz-progress-bar {
+            background: #77aaff;
+            border-radius: 5px;
+        }
+
+        .testimonials {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .testimonial-item {
+            margin-bottom: 20px;
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+        }
+
+        .testimonial-item h4 {
+            margin: 10px 0 0;
+            font-size: 18px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .contact-form button {
+            background: #77aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #5599ff;
+            transform: translateY(-3px);
+        }
+
+        .download-resume {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .download-resume button {
+            background: #77aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-resume button:hover {
+            background: #5599ff;
+            transform: translateY(-3px);
+        }
+
+        /* 3D Effects */
+        .experience-item, .education-item, .testimonial-item, .contact-form, .download-resume {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .experience-item:hover, .education-item:hover, .testimonial-item:hover, .contact-form:hover, .download-resume:hover {
+            transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+        }
+
+        /* Additional Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .experience-item, .education-item, .testimonial-item, .contact-form, .download-resume {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Back to Summary Button */
+        .back-to-summary {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-to-summary button {
+            background: #77aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-to-summary button:hover {
+            background: #5599ff;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jake Skidmore</h1>
+        <p>New Jersey | +1 (201) 835-6626 | jake.r.skid91@gmail.com | LinkedIn: <a href="https://linkedin.com/jakeskidmore" target="_blank">linkedin.com/jakeskidmore</a></p>
+    </header>
+
+    <section id="summary">
+        <div class="container">
+            <h2>SUMMARY</h2>
+            <p>
+                Results-driven Engineering Manager with over 11 years of experience in electrical and electronic manufacturing. 
+                Expertise in strategic planning, process optimization, product lifecycle management, and cross-functional leadership. 
+                Adept at cost reduction, operational efficiency, and ensuring compliance with industry standards. 
+                Passionate about continuous improvement, automation, and fostering high-performance engineering teams. 
+                Holds a Master’s in Engineering Management from Drexel University.
+            </p>
+            <div class="view-more">
+                <button onclick="showTabs()">View More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tabs-section" style="display: none;">
+        <div class="container">
+            <!-- Add a "Back to Summary" button -->
+            <div class="back-to-summary">
+                <button onclick="showSummary()">Back to Summary</button>
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="experience">Work Experience</button>
+                <button class="tab-button" data-tab="education">Education</button>
+                <button class="tab-button" data-tab="skills">Skills</button>
+                <button class="tab-button" data-tab="testimonials">Testimonials</button>
+                <button class="tab-button" data-tab="contact">Contact</button>
+          
+            </div>
+            <div id="experience" class="tab-content active">
+                <h2>WORK EXPERIENCE</h2>
+                <div class="experience-item">
+                    <h3>Crestron Electronics – Rockleigh, NJ</h3>
+                    <p>Engineering Manager | July 2017 - Present</p>
+                    <ul>
+                        <li>Develop and execute departmental goals aligning with company objectives.</li>
+                        <li>Lead and mentor a team of 20+ engineers, overseeing recruitment, onboarding, training, and performance assessment.</li>
+                        <li>Optimize efficiency through resource allocation, process optimization, and leveling techniques.</li>
+                        <li>Implement standardized workflows to enhance consistency and adherence to industry best practices.</li>
+                        <li>Manage budgets to balance financial performance with operational needs, incorporating budget forecasting & cost control.</li>
+                        <li>Oversee planning, design, and execution of complex projects, ensuring timely and high-quality deliverables.</li>
+                        <li>Foster relationships with clients, partners, and stakeholders for long-term success through stakeholder management.</li>
+                        <li>Implement feedback mechanisms, risk assessment & mitigation, and post-project evaluations to drive efficiency and reduce errors.</li>
+                        <li>Facilitate open communication, cross-functional team collaboration, and data-driven decisions for strategic improvements.</li>
+                        <li>Partner with executives and cross-functional teams to enhance service delivery and develop innovative solutions.</li>
+                        <li>Ensure compliance with NEC, IECC, ASHRAE, and Title 24.</li>
+                        <li>Foster a culture of learning and professional growth within the team through workforce development & mentorship.</li>
+                        <li>Spearhead software development for Build-to-Order panel generation, streamlining product customization.</li>
+                        <li>Utilize Agile Methodology (Scrum, Kanban) and Waterfall Methodology for project management.</li>
+                        <li>Drive continuous improvement initiatives to optimize performance and reduce inefficiencies.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Ocean County College – Toms River, NJ</h3>
+                    <p>Adjunct Professor of Engineering | June 2023 - Present</p>
+                    <ul>
+                        <li>Instruct evening engineering courses, fostering critical thinking and hands-on problem-solving skills.</li>
+                        <li>Engage students through interactive discussions and real-world applications of engineering principles.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Colonial Airstream – Millstone, NJ</h3>
+                    <p>Manager, Service Representative | May 2013 - July 2017</p>
+                    <ul>
+                        <li>Negotiated with manufacturers, reducing repair turnaround time by 40%.</li>
+                        <li>Developed efficient communication channels, decreasing downtime for equipment repairs by 30%.</li>
+                        <li>Led training sessions, improving successful repair authorizations by 20%.</li>
+                        <li>Designed and managed clean energy installations, including PV solar and battery storage systems.</li>
+                        <li>Streamlined warranty claim processes using customer feedback, increasing satisfaction by 20%.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>STS – Jackson, NJ</h3>
+                    <p>Lead Technician | May 2009 - October 2012</p>
+                    <ul>
+                        <li>Executed timely repairs, achieving a 95% customer satisfaction rate and increasing repeat business by 20%.</li>
+                        <li>Reduced repair times by 30%, cutting operational costs by $10,000 per quarter.</li>
+                        <li>Negotiated vendor pricing, saving 15% on maintenance supplies.</li>
+                        <li>Streamlined repair processes, increasing efficiency by 40% and reducing downtime per repair by 2 hours.</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="education" class="tab-content">
+                <h2>EDUCATION</h2>
+                <div class="education-item">
+                    <h3>Drexel University – Philadelphia, PA</h3>
+                    <p>Master of Science, Engineering Management – May 2017</p>
+                </div>
+                <div class="education-item">
+                    <h3>Thomas Edison State University – Trenton, NJ</h3>
+                    <p>Bachelor of Science, Technical Studies – December 2014</p>
+                </div>
+            </div>
+            <div id="skills" class="tab-content">
+                <h2>SKILLS</h2>
+                <div class="skill-level">
+                    <span>Project Management</span>
+                    <progress value="90" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Product Management</span>
+                    <progress value="85" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Strategic Thinking</span>
+                    <progress value="88" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Strategic Planning & Execution</span>
+                    <progress value="92" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Process Standardization</span>
+                    <progress value="87" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Change Management</span>
+                    <progress value="85" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Team Development</span>
+                    <progress value="90" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Workforce Development & Mentorship</span>
+                    <progress value="89" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Business Process Improvement (BPI)</span>
+                    <progress value="91" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Time Management</span>
+                    <progress value="95" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Problem-Solving</span>
+                    <progress value="94" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Innovation</span>
+                    <progress value="88" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Quality Improvement</span>
+                    <progress value="90" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Agile & Waterfall Management</span>
+                    <progress value="93" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Coaching</span>
+                    <progress value="87" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Communication</span>
+                    <progress value="92" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Presentation</span>
+                    <progress value="89" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Decision-Making & Problem-Solving</span>
+                    <progress value="91" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Relationship Building</span>
+                    <progress value="90" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Adaptability</span>
+                    <progress value="93" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Microsoft Office Suite</span>
+                    <progress value="95" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>AutoCAD</span>
+                    <progress value="85" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Smartsheet</span>
+                    <progress value="88" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Salesforce</span>
+                    <progress value="87" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Jira</span>
+                    <progress value="90" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Bluebeam Revu</span>
+                    <progress value="86" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>HTML</span>
+                    <progress value="92" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>Python</span>
+                    <progress value="89" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>JavaScript</span>
+                    <progress value="88" max="100"></progress>
+                </div>
+                <div class="skill-level">
+                    <span>CSS</span>
+                    <progress value="90" max="100"></progress>
+                </div>
+            </div>
+            <div id="testimonials" class="tab-content">
+                <h2>TESTIMONIALS</h2>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Jake is an exceptional leader with a keen eye for detail and a passion for innovation. His ability to manage complex projects while fostering team growth is unparalleled."</p>
+                        <h4>- John Doe, CEO at Crestron Electronics</h4>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Working with Jake has been a pleasure. His strategic thinking and dedication to excellence have significantly improved our operational efficiency."</p>
+                        <h4>- Jane Smith, Director at Ocean County College</h4>
+                    </div>
+                </div>
+            </div>
+            <div id="contact" class="tab-content">
+                <h2>CONTACT</h2>
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download-resume">
+        <div class="container">
+            <div class="download-resume">
+                <h2>DOWNLOAD RESUME</h2>
+                <button onclick="downloadResume()">Download Resume (PDF)</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jake Skidmore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to the clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Show tabs when "View More" is clicked
+        function showTabs() {
+            document.getElementById('tabs-section').style.display = 'block';
+            document.getElementById('summary').style.display = 'none';
+        }
+
+        // Simulate resume download
+        function downloadResume() {
+            alert("Downloading resume...");
+            // Replace this with an actual PDF download link
+            window.location.href = "path/to/resume.pdf";
+        }
+        
+        // Show the Summary section and hide the Tabs section
+function showSummary() {
+    document.getElementById('summary').style.display = 'block';
+    document.getElementById('tabs-section').style.display = 'none';
+}
+
+// Show the Tabs section and hide the Summary section
+function showTabs() {
+    document.getElementById('tabs-section').style.display = 'block';
+    document.getElementById('summary').style.display = 'none';
+}
+        
+    </script>
+</body>
+</html>tml>
